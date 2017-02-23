@@ -1,0 +1,32 @@
+<html>
+    <head>
+        <title> Image rollover </title>
+        <script language="JavaScript">
+            function highlightdocs () {
+                if (document.images) {
+                 document.images["docs"].src = docsOn.src; 
+                }
+            }
+            function unhighlightdocs () {
+                if (document.images) { 
+                     document.images["docs"].src = docsOff.src; 
+                }
+            }
+
+            if (document.images) {
+                docsOn = new Image();
+                docsOn.src = "https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg";
+                docsOff = new Image () ;
+                docsOff.src = "https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg";
+            }
+        </script>
+    </head>
+
+    <body>
+        <p> <a href="js01.html" 
+            onmouseover="highlightdocs () " onmouseout="unhighlightdocs () ">
+                <img src="https://i.ytimg.com/vi/tntOCGkgt98/maxresdefault.jpg" name=docs height=25 width=25 border=0 >
+            </a>
+        </p>
+    </body>
+</html>
