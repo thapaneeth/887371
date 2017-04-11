@@ -2,30 +2,54 @@
 <head>
     <script>
         function loadXMLDoc(){
-            var xmlhttp;
+            var xmlhttp1
+            var xmlhttp2
+            var xmlhttp3;
             if(window.XMLHttpRequest){
                 //code for IE7+, chrome, firefox, Opera, Safari
-                xmlhttp=new XMLHttpRequest();
+                xmlhttp1=new XMLHttpRequest();
+                xmlhttp2=new XMLHttpRequest();
+                xmlhttp3=new XMLHttpRequest();
             }else{
                 //code for IE5, IE6
-                xmlhttp=new ActiveXObject("Microsoft.XMLHTTP");
+                xmlhttp1=new ActiveXObject("Microsoft.XMLHTTP");
+                xmlhttp2=new ActiveXObject("Microsoft.XMLHTTP");
+                xmlhttp3=new ActiveXObject("Microsoft.XMLHTTP");
             }
-            xmlhttp.onreadystatechange=function(){
-                alert(xmlhttp.readyState+" : "+xmlhttp.status);
-                if(xmlhttp.readyState==4 && xmlhttp.status==200){
-                    document.getElementById("myDiv").innerHTML=xmlhttp.responseText;
+            xmlhttp1.onreadystatechange=function(){
+                alert(xmlhttp1.readyState+" : "+xmlhttp1.status);
+                if(xmlhttp1.readyState==4 && xmlhttp1.status==200){
+                    document.getElementById("div1").innerHTML=xmlhttp1.responseText;
                 }
             }
-            xmlhttp.open("GET","http://angsila.cs.buu.ac.th/~58160634/887371/lab05/kamkom.php",true);
-            xmlhttp.send();
-            xmlhttp.open("GET","http://angsila.cs.buu.ac.th/~58160625/887371/lab05/kamkom.php",true);
-            xmlhttp.send();
+            xmlhttp1.open("GET","http://angsila.cs.buu.ac.th/~58160634/887371/lab05/kamkom.php",true);
+            xmlhttp1.send();
+            xmlhttp2.onreadystatechange=function(){
+                alert(xmlhttp2.readyState+" : "+xmlhttp2.status);
+                if(xmlhttp2.readyState==4 && xmlhttp2.status==200){
+                    document.getElementById("div2").innerHTML=xmlhttp2.responseText;
+                }
+            }
+            xmlhttp2.open("GET","http://angsila.cs.buu.ac.th/~58160625/887371/lab05/kamkom.php",true);
+            xmlhttp2.send();
+            xmlhttp3.onreadystatechange=function(){
+                alert(xmlhttp3.readyState+" : "+xmlhttp3.status);
+                if(xmlhttp3.readyState==4 && xmlhttp3.status==200){
+                    document.getElementById("div3").innerHTML=xmlhttp3.responseText;
+                }
+            }
+            xmlhttp3.open("GET","http://angsila.cs.buu.ac.th/~58160697/887371/lab05/kamkom.php",true);
+            xmlhttp3.send();
         }
     </Script>
 </head>
 <body>
-    <div id="myDiv">
+    <div id="div1">
         <h2>Let AJAX change this text</h2>
+    </div>
+    <div id="div2">
+    </div>
+    <div id="div3">
     </div>
     <button type="button" onclick="loadXMLDoc()">
         Change Content

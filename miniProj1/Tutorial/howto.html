@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>chat tutorial</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <style>
+      img{
+          width: 800px;
+      }
+      body {
+        background-color: #22ffe1;
+        font-family: "Roboto", helvetica, arial, sans-serif;
+        font-size: 16px;
+        font-weight: 400;
+        text-rendering: optimizeLegibility;
+        text-align: center;
+    }
+</style>
+</head>
+<body>
+<h1>Chatroom's Tutorial</h1> 
+ <IMG SRC="pic/chatbox.png"><BR>
+<h3>Let's start!</h3>
+<p>เราเริ่มจากการสร้าง index.php<br>
+ใช้ tag PHP สร้าง login from เพื่อถามชื่อและอีเมล์ เก็บข้อมูลในรูปแบบ text และ email ตามลำดับ ก่อนจะเข้าหน้าแชท
+</p>
+<IMG SRC="pic/chat01.jpg"><BR><BR>
+<IMG SRC="pic/index01.jpg"><BR><BR><BR>
+<p>ตรวจสอบว่า name ที่รับมาไม่ใช่ค่าว่าง ถ้าเป็นค่าว่าง จะเตือนว่า  Please type in a name แล้วพิมพ์ชื่อและอีเมลล์ใหม่</p>
+<IMG SRC="pic/index02.jpg"><BR>
+<p>เช็คว่า $_POST["name"] ไม่เท่ากับ ค่าว่าง 
+แล้วติดต่อกับฐานข้อมูลเพื่อเพิ่มชื่อลงไป</p>
+<IMG SRC="pic/index03.jpg"><BR>
+<IMG SRC="pic/index04.jpg"><BR>
+<p>สร้าง <h4>post.php</h4> เมื่อมีข้อมูลถูกโพสท์หลังผู้ใช้ login แล้ว เริ่มส่งข้อความ เป้าหมายของเราก็คือเอาข้อความเหล่านั้นใส่ไว้ใน chat log</p>
+<IMG SRC="pic/post.png"><BR>
+    <ol type="1" align= 'left'>
+        <li>สร้างฟังก์ชั่น session_start() โดยใช้ $_SESSION['name']</li>
+        <li>ตรวจสอบว่า session 'name' มีอยู่แล้ว</li>
+        <li>จับข้อมูลที่เริ่มส่งโดยใช้  jQuery เก็บข้อมูลไว้ในตัวแปร $text</li>
+        <li>ข้อมูลที่ผู้ใช้ส่งเข้ามาจะถูกเก็บไว้ที่ไฟล์ log.html โดยการเรียกใช้ฟังก์ชั่น  fopen ในการสร้างไฟล์ขึ้นมาใหม่ชื่อว่า log.html โดยใช้โหมด  'a' กรณีที่มีไฟล์อยู่แล้วจะทำการเขียนไฟล์ต่อจากที่มีอยู่แต่ถ้าไม่มีไฟล์จะถูกสร้างขึ้น จากนั้นเราจะเขียนข้อความโดยใช้ฟังก์ชัน  fwrite()<br> 
+ข้อความนี้จะประกอบด้วย วันที่และเวลา โดยใช้ฟังก์ชั่น date(), ชื่อผู้ใช้และข้อความ โดยห่อหุ้มด้วยฟังก์ชั่น htmlspecialchars() เพื่อแปลง predefined characters  เป็น HTML entities</li>
+    </ol>
+</table><br><br>
+<p>ก่อนที่เราจะสร้างแท็ก html เรามาสร้าง stylesheet กันก่อนโดยใช้ชื่อว่า <h4>style.css</h4></p>
+<IMG SRC="pic/css1.png"><br>
+<IMG SRC="pic/css2.png"><br>
+<IMG SRC="pic/css3.png"><br>
+<IMG SRC="pic/css4.png"><br>
+<h4>เขียน html DOCTYPE, head และ body tag</h4>
+<p>ใน head จะเขียน title และเขียน link ไปยัง css stylesheet (style.css)
+</p>
+<IMG SRC="pic/index05.jpg"><BR>
+<p>ส่วนของ body html เริ่มด้วย tag php 
+ถ้า login ไม่สำเร็จก็จะเข้าหน้า loginForm ใหม่</p>
+
+<IMG SRC="pic/index06.jpg"><br>
+<p>แต่ถ้า login สำเร็จ ก็จะเข้ามาหน้าแชทรูม สร้างตารางตามรูปแบบที่กำหนดไว้ใน style.css</p>
+<IMG SRC="pic/chatbox.png"><BR>
+<IMG SRC="pic/index07.png"><br>
+<p>สร้าง ตารางโดยแบ่งเป็นสองฝั่ง คือ ฝั่ง chatbox และฝั่ง userbox</p>   <br>
+<p>ตรวจสอบว่ามีไฟล์ log.html และขนาดมากกว่า 0 จากนั้นจึงอ่านข้อมูลในไฟล์และแสดงออกทางหน้าจอ</p>
+<IMG SRC="pic/index08.png"><br>
+<p>ขวามือของ chatbox จะแสดงชื่อของผู้ใช้ทั้งหมดโดยจะแสดงชื่อของเราโดยมี * ข้างหน้าชื่อและท้ายชื่อ</p>
+<IMG SRC="pic/index09.png"><br>
+<p>สร้างฟอร์มส่งข้อความและปุ่ม submit</p>
+<IMG SRC="pic/index10_1.png"><br>
+<p>เรียกใช้ ajax libraly <br>
+เมื่อกดปุ่ม exit จะมีป็อปอัพขึ้นมาว่า Are you sure you want to end the session? <br>
+ถ้าใช่ก็จะกลับสู่หน้า login อีกครั้ง</p>
+<IMG SRC="pic/index10_2.png"><br>
+<p>ใช้ jQuery เก็บค่าอะไรก็ตามที่ผู้ใช้พิมพ์เข้ามา เก็บไว้ในตัวแปร  clientmsg<br>
+ส่ง POST request ไปยังไฟล์  post.php  มันจะโพสข้อความที่ผู้ใช้เข้ามาหรือ save ไว้ในตัวแปร clientmsg 
+</p>
+</p>
+<IMG SRC="pic/index10_3.png"><br>
+<p>โหลดไฟล์ที่เก็บบันทึกการแชท</p>
+<IMG SRC="pic/index11_1.png"><br>
+<p>เพิ่ม scripts มาตอนท้ายเพื่อให้โหลดหน้า page เร็วขึ้น <br>
+และลิ้งค์กับ Google jQuery CDN เพื่อใช้ jQuery library
+</p>
+<IMG SRC="pic/index11_2.png"><br>
+
+</body>
+</html>
+

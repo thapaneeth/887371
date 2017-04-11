@@ -1,0 +1,40 @@
+
+<html>
+<head>
+<script >
+function loadXML(){
+	var xmlhttp = new XMLHttpRequest;
+	xmlhttp.onreadystatechange = function() {
+		var txt="";
+		var x,i;
+		if (xmlhttp.readyState == 4 && xmlhttp.status == 200){
+			x=xmlhttp.responseXML.documentElement.getElementsByTagName("book");
+			for(i=0;i<x.length;i++){
+					txt = txt+"<h3>"+ x[i].getElementsByTagName("title")[0].firstChild.nodeValue +"</h3><br>";
+
+					txt = txt+"<p>"+ x[i].getElementsByTagName("author")[0].firstChild.nodeValue +" , </p>";
+
+					txt = txt+"<p>"+x[i].getElementsByTagName("publisher")[0].firstChild.nodeValue +"</p><br>";
+
+					txt = txt+"<p>"+  "<img src='" + x[i].getElementsByTagName("cover")[0].getAttribute("src") + "' height='256'>"+"</p><br>";
+
+					txt = txt+"<p>"+ x[i].getElementsByTagName("blurb")[0].firstChild.nodeValue +"</p><br>";
+					
+			}
+			document.getElementById('disp').innerHTML=txt;
+		}
+	}
+	xmlhttp.open("GET",'http://angsila.cs.buu.ac.th/~wittawas/592/887371/labs/get_xml.php',true);
+	xmlhttp.send();
+}
+</script>
+</head>
+<body>
+	<div id="disp">
+	 Let AJAX change this text
+	</div>
+	<button type="button" onclick="loadXML()">
+		change content
+	</button>
+</body>
+</html>
