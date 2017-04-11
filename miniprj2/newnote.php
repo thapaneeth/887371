@@ -44,7 +44,7 @@
         <label for="text">รายละเอียด:</label>
         <input type="text" name="detail" id="detail">
       </div>
-      <input type="submit" data-inline="true" value="Submit" id="btn_submit">
+      <input href="main.php" type="submit" data-inline="true" value="Submit" id="btn_submit" >
     </form>
   </div>
 
